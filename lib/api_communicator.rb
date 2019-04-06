@@ -1,14 +1,35 @@
-# when [:value] and ["value"]
-
 require 'rest-client'
 require 'json'
 require 'pry'
+require_relative 'command_line_interface'
+
+def valid_json?(string)
+  !!JSON.parse(string)
+rescue JSON::ParserError
+  false
+end
+
+def random_quote
+  cn_api = JSON.parse(RestClient.get("https://api.chucknorris.io/jokes/random"))
+  result = cn_api["value"]
+  puts "\n#{result}"
+end
 
 def get_cn_api(word)
-  query = word
-  cn_api = JSON.parse(RestClient.get("https://api.chucknorris.io/jokes/search?query=#{query}"))
-  result = cn_api["result"][0]["value"]
-  puts result
+  url = "https://api.chucknorris.io/jokes/search?query=#{word}"
+  if word == "random"
+    random_quote
+  else
+    if valid_json?(url)
+      cn_api = JSON.parse(RestClient.get(url))
+      result = cn_api["result"][0]["value"]
+      puts "\n#{result}"
+    else
+      puts "There are no Chuck Norris quotes for that word"
+      try_again?
+    end
+  end
+  repeat?
 end
 
 
