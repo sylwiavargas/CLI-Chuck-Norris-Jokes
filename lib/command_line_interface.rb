@@ -8,10 +8,17 @@ def get_query_from_user
   gets.chomp.downcase
 end
 
+def get_giph
+  giph_url = get_giph_api
+  system("open -a Safari #{giph_url}")
+end
+
+
 def check_repeat
   word = gets.chomp.downcase
 if word == "no"
     puts "Goodbye!"
+    get_giph
     exit
   elsif word == "yes" || word == "sure"
     word = get_query_from_user

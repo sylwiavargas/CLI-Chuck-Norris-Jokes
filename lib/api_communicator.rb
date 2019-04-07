@@ -19,7 +19,6 @@ def random_quote
   cn_api = JSON.parse(RestClient.get("https://api.chucknorris.io/jokes/random"))
   result = cn_api["value"]
   puts "\n#{result}"
-  get_giph
 end
 
 def get_cn_api(word)
@@ -29,11 +28,9 @@ def get_cn_api(word)
       cn_api = JSON.parse(RestClient.get(url))
       result = cn_api["result"][0]["value"]
       puts "\n#{result}"
-      get_giph
     else
       puts "There are no Chuck Norris quotes for that word"
       try_again?
     end
-  end
   repeat?
 end
