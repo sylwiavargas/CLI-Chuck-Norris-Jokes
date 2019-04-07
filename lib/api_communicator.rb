@@ -5,7 +5,7 @@ require_relative 'command_line_interface.rb'
 require_relative 'api_giphs.rb'
 
 def valid_json?(string)
-  !!JSON.parse(string)
+  !!JSON.parse(RestClient.get(string))
 rescue JSON::ParserError
   false
 end
