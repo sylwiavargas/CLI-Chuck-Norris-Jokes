@@ -23,7 +23,6 @@ def get_cn_api(word)
       cn_api = JSON.parse(RestClient.get(url))
       num = rand(0...10)
       result = cn_api["result"][num]["value"]
-        binding.pry
       puts "\n#{result}"
     else
       puts "There are no Chuck Norris quotes for that word"
@@ -31,6 +30,3 @@ def get_cn_api(word)
     end
   repeat?
 end
-
-
-binding.pry
