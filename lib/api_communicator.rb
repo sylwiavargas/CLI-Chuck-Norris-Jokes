@@ -24,9 +24,7 @@ end
 
 def get_cn_api(word)
   url = "https://api.chucknorris.io/jokes/search?query=#{word}"
-  if word == "random"
-    random_quote
-  else
+  word == "random" ? random_quote :
     if valid_json?(url)
       cn_api = JSON.parse(RestClient.get(url))
       result = cn_api["result"][0]["value"]

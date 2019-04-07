@@ -1,16 +1,16 @@
 def welcome
-  puts "Howdy, partner! Welcome to Chuck Norris Jokes Kingdom."
+  puts "Howdy, partner!"
 end
 
 def get_query_from_user
-  puts "\nTell me your fav word to get a joke."
-  puts '   psssst. for a random joke, type "random"'
+  puts "\nTell me your favorite word to get a Chuck Norris joke."
+  puts '   Psssst. for a random joke, type "random"'
   gets.chomp.downcase
 end
 
 def check_repeat
   word = gets.chomp.downcase
-  word == "no"
+if word == "no"
     puts "Goodbye!"
     exit
   elsif word == "yes" || word == "sure"
