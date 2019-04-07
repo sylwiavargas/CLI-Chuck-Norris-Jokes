@@ -13,11 +13,10 @@ def get_giph
   system("open -a Safari #{giph_url}")
 end
 
-
 def check_repeat
   word = gets.chomp.downcase
 if word == "no"
-    puts "Goodbye!"
+    puts "Goodbye! Here some Chuck Norris gif for you."
     get_giph
     exit
   elsif word == "yes" || word == "sure"

@@ -10,11 +10,6 @@ rescue JSON::ParserError
   false
 end
 
-def get_giph
-  giph_url = get_giph_api
-  system("open -a Safari #{giph_url}")
-end
-
 def random_quote
   cn_api = JSON.parse(RestClient.get("https://api.chucknorris.io/jokes/random"))
   result = cn_api["value"]
@@ -26,7 +21,9 @@ def get_cn_api(word)
   word == "random" ? random_quote :
     if valid_json?(url)
       cn_api = JSON.parse(RestClient.get(url))
-      result = cn_api["result"][0]["value"]
+      num = rand(0...10)
+      result = cn_api["result"][num]["value"]
+        binding.pry
       puts "\n#{result}"
     else
       puts "There are no Chuck Norris quotes for that word"
@@ -34,3 +31,6 @@ def get_cn_api(word)
     end
   repeat?
 end
+
+
+binding.pry
