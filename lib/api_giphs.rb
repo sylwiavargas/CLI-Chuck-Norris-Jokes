@@ -5,8 +5,8 @@ require 'pry'
 require 'json'
 require 'net/http'
 
-def get_giph_api(keyword)
-  giph_api = JSON.parse(RestClient.get("http://api.giphy.com/v1/gifs/search?q=#{keyword}&api_key=dc6zaTOxFJmzC&limit=10"))
+def get_giph_api
+  giph_api = JSON.parse(RestClient.get("http://api.giphy.com/v1/gifs/search?q=chuck+norris&api_key=dc6zaTOxFJmzC&limit=10"))
   num = rand(0...9)
   result = giph_api["data"][num]["url"]
   return result
