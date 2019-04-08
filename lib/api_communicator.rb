@@ -21,7 +21,7 @@ def get_cn_api(word)
   word == "random" ? random_quote :
     if valid_json?(url)
       cn_api = JSON.parse(RestClient.get(url))
-      num = rand(0...10)
+      num = rand(0...cn_api["total"])
       result = cn_api["result"][num]["value"]
       puts "\n#{result}"
     else

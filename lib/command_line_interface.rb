@@ -15,8 +15,8 @@ end
 
 def check_repeat
   word = gets.chomp.downcase
-if word == "no"
-    puts "Goodbye! Here some Chuck Norris gif for you."
+  if word == "no"
+    puts "Goodbye! Here is a Chuck Norris gif for you."
     get_giph
     exit
   elsif word == "yes" || word == "sure"
